@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEDA Funding Challenge | Be Live By Black Friday</title>
+    <style>
+        /* CSS VARIABLES based on your flyer */
+        :root {
+            --primary-orange: #E65100; /* Matches your flyer */
+            --primary-yellow: #FFC107;
+            --dark-bg: #1A1A1A;
+            --light-bg: #FAF7F2;
+            --text-dark: #222222;
+            --text-light: #FFFFFF;
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        /* RESET & BASE */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-main); color: var(--text-dark); line-height: 1.6; background-color: var(--light-bg); }
+        h1, h2, h3, h4 { line-height: 1.1; font-weight: 900; letter-spacing: -0.02em; }
+        a { text-decoration: none; }
+        
+        /* UTILITIES */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .text-center { text-align: center; }
+        .highlight-orange { color: var(--primary-orange); }
+        .highlight-yellow { color: var(--primary-yellow); }
+        .bold { font-weight: bold; }
+        
+        /* BUTTONS & CTAs */
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--primary-orange);
+            color: var(--text-light);
+            font-size: 24px;
+            font-weight: 900;
+            padding: 20px 40px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.2s, background-color 0.2s;
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+            display: block;
+            text-align: center;
+        }
+        .cta-btn:hover { background-color: #CC4800; transform: translateY(-2px); }
+        
+        .cta-btn-yellow {
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+        }
+        .cta-btn-yellow:hover { background-color: #E0A800; }
+
+        /* HEADER / HERO SECTION */
+        .top-bar { background-color: #000; color: white; padding: 10px 0; font-size: 12px; font-weight: bold; text-transform: uppercase; display: flex; justify-content: space-between; }
+        .hero { padding: 60px 20px; background-color: var(--light-bg); }
+        .hero-logos { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        .hero h1 { font-size: 4rem; margin-bottom: 20px; text-transform: uppercase; }
+        .hero h2 { font-size: 2rem; margin-bottom: 20px; font-weight: 700; }
+        .hero p { font-size: 1.2rem; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto; }
+
+        /* COUNTDOWN TIMER */
+        .countdown-box {
+            background-color: #111;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            text-align: center;
+        }
+        .countdown-title { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+        .timer { display: flex; justify-content: center; gap: 15px; }
+        .time-block { display: flex; flex-direction: column; align-items: center; }
+        .time-num { font-size: 2.5rem; font-weight: 900; color: var(--primary-yellow); line-height: 1; }
+        .time-label { font-size: 12px; text-transform: uppercase; margin-top: 5px; }
+
+        /* SOCIAL PROOF / MARQUEE */
+        .social-proof { background-color: var(--primary-orange); color: white; padding: 20px 0; overflow: hidden; white-space: nowrap; }
+        .marquee { display: inline-block; animation: marquee 20s linear infinite; font-size: 1.2rem; font-weight: bold; }
+        .marquee span { margin: 0 30px; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* SECTION STYLING */
+        .section { padding: 80px 20px; }
+        .section-dark { background-color: var(--dark-bg); color: white; }
+        .section-orange { background-color: var(--primary-orange); color: white; }
+        .section-title { font-size: 3rem; margin-bottom: 40px; text-align: center; }
+        
+        /* SCHEDULE / DAYS */
+        .schedule-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 800px; margin: 0 auto; }
+        .day-card { background: white; padding: 30px; border-radius: 8px; border-left: 8px solid var(--primary-orange); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .day-card h3 { font-size: 1.8rem; margin-bottom: 10px; }
+        .day-card .date { color: var(--primary-orange); font-weight: bold; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 15px; display: block; }
+
+        /* PRICING / PACKAGES */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto; }
+        .price-card { background: white; border: 2px solid var(--text-dark); padding: 40px 30px; border-radius: 8px; display: flex; flex-direction: column; }
+        .price-card.vip { background: var(--dark-bg); color: white; border-color: var(--primary-yellow); }
+        .price-card h3 { font-size: 1.5rem; text-transform: uppercase; margin-bottom: 10px; color: var(--primary-orange); }
+        .price-card.vip h3 { color: var(--primary-yellow); }
+        .price-tag { font-size: 3rem; font-weight: 900; margin-bottom: 20px; }
+        .price-features { list-style: none; margin-bottom: 30px; flex-grow: 1; }
+        .price-features li { margin-bottom: 15px; position: relative; padding-left: 25px; }
+        .price-features li::before { content: "✓"; position: absolute; left: 0; color: var(--primary-orange); font-weight: bold; }
+        .price-card.vip .price-features li::before { color: var(--primary-yellow); }
+
+        /* FAQ SECTION */
+        .faq-item { border-bottom: 1px solid #ddd; padding: 20px 0; }
+        .faq-item h3 { font-size: 1.2rem; margin-bottom: 10px; }
+
+        /* FOOTER */
+        .footer { background-color: #000; color: #888; text-align: center; padding: 40px 20px; font-size: 0.8rem; }
+        .footer p { margin-bottom: 10px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero h2 { font-size: 1.5rem; }
+            .section-title { font-size: 2rem; }
+            .time-num { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="container" style="display: flex; justify-content: space-between; width: 100%;">
+            <span>creative compound.</span>
+            <span>BLACK FRIDAY SPECIAL</span>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <header class="hero text-center">
+        <div class="container">
+            <p style="color: var(--primary-orange); font-weight: bold; text-transform: uppercase; margin-bottom: 20px;">Free 3-Day Challenge • Tue 24 – Thu 26 Nov</p>
+            <h1>Be live and selling online by Black Friday.</h1>
+            <h2>Join the CEDA Funding Challenge. In three days you learn how to set up an online business, so you are ready for customers on Friday 27 Nov.</h2>
+            
+            <!-- COUNTDOWN -->
+            <div class="countdown-box">
+                <div class="countdown-title">Registration Closes In:</div>
+                <div class="timer">
+                    <div class="time-block"><span class="time-num" id="days">02</span><span class="time-label">Days</span></div>
+                    <div class="time-block"><span class="time-num" id="hours">14</span><span class="time-label">Hrs</span></div>
+                    <div class="time-block"><span class="time-num" id="mins">35</span><span class="time-label">Mins</span></div>
+                    <div class="time-block"><span class="time-num" id="secs">10</span><span class="time-label">Secs</span></div>
+                </div>
+            </div>
+
+            <a href="https://chat.whatsapp.com/FGOdhJ1Vd0A6bh0rp9xMHC?s=cl&p=a&iam=2" class="cta-btn">Join the WhatsApp Group</a>
+        </div>
+    </header>
+
+    <!-- SOCIAL PROOF MARQUEE -->
+    <div class="social-proof">
+        <div class="marquee">
+            <span>✦ Business Registration Included</span>
+            <span>✦ No Experience Needed</span>
+            <span>✦ CIPA Registration Guidance</span>
+            <span>✦ Professional Website Setup</span>
+            <span>✦ 3 Months Training & Support</span>
+            <span>✦ Business Registration Included</span>
+            <span>✦ No Experience Needed</span>
+            <span>✦ CIPA Registration Guidance</span>
+            <span>✦ Professional Website Setup</span>
+            <span>✦ 3 Months Training & Support</span>
+        </div>
+    </div>
+
+    <!-- WHAT HAPPENS EACH DAY -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">What happens each day</h2>
+            <div class="schedule-grid">
+                
+                <div class="day-card">
+                    <span class="date">Day 1 • Tue 24 Nov</span>
+                    <h3>The Foundation</h3>
+                    <p>Choose your business idea and brand name. Learn how registration and a business bank account work.</p>
+                </div>
+
+                <div class="day-card">
+                    <span class="date">Day 2 • Wed 25 Nov</span>
+                    <h3>The Build</h3>
+                    <p>Build your online store, website, and social pages so you look professional from day one.</p>
+                </div>
+
+                <div class="day-card">
+                    <span class="date">Day 3 • Thu 26 Nov</span>
+                    <h3>The Launch</h3>
+                    <p>Set up payments, test checkout, and plan your launch strategy for Black Friday.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CHOOSE HOW YOU JOIN (PRICING) -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2 class="section-title text-center">Choose how you join</h2>
+            <p class="text-center" style="margin-bottom: 40px; color: #ccc;">Everyone can attend the challenge. Packages are for people who want us to do more with them.</p>
+            
+            <div class="pricing-grid">
+                
+                <!-- FREE TIER -->
+                <div class="price-card">
+                    <h3>Challenge</h3>
+                    <div class="price-tag">FREE</div>
+                    <ul class="price-features">
+                        <li>Live 3-day training</li>
+                        <li>Learn how to set up an online business</li>
+                        <li>Replays in our WhatsApp group</li>
+                    </ul>
+                    <a href="https://chat.whatsapp.com/FGOdhJ1Vd0A6bh0rp9xMHC?s=cl&p=a&iam=2" class="cta-btn cta-btn-yellow" style="font-size: 18px; padding: 15px;">Join Group Free</a>
+                </div>
+
+                <!-- STARTER TIER -->
+                <div class="price-card">
+                    <h3>Starter</h3>
+                    <div class="price-tag">P1,650</div>
+                    <ul class="price-features">
+                        <li>Everything in Free</li>
+                        <li>Business or company registration with CIPA</li>
+                        <li>Guidance to set up your online business</li>
+                        <li><em>Does not include 3-month support</em></li>
+                    </ul>
+                    <a href="https://chat.whatsapp.com/FGOdhJ1Vd0A6bh0rp9xMHC?s=cl&p=a&iam=2" class="cta-btn" style="font-size: 18px; padding: 15px;">Join Group for Starter</a>
+                </div>
+
+                <!-- VIP TIER -->
+                <div class="price-card vip">
+                    <h3>VIP</h3>
+                    <div class="price-tag highlight-yellow">P3,000</div>
+                    <ul class="price-features">
+                        <li>Everything in Starter</li>
+                        <li>Professional website and social pages</li>
+                        <li>Business plan development</li>
+                        <li>3 months training and support</li>
+                    </ul>
+                    <a href="https://chat.whatsapp.com/FGOdhJ1Vd0A6bh0rp9xMHC?s=cl&p=a&iam=2" class="cta-btn cta-btn-yellow" style="font-size: 18px; padding: 15px;">Join Group for VIP</a>
+                </div>
+
+            </div>
+            <p class="text-center" style="margin-top: 30px; font-size: 12px; color: #888;">VIP supports you on your path to BWP 10,350/month. Results vary and no income is guaranteed.</p>
+        </div>
+    </section>
+
+    <!-- QUESTIONS / FAQ -->
+    <section class="section">
+        <div class="container" style="max-width: 800px;">
+            <h2 class="section-title">Questions</h2>
+            
+            <div class="faq-item">
+                <h3>Is the challenge really free?</h3>
+                <p>Yes. Packages are optional.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Do I need an existing business?</h3>
+                <p>No. Starter and VIP include registration, or you can bring an idea.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>Where does it happen?</h3>
+                <p>Online, live inside our private WhatsApp group.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>How do I pay for Starter or VIP?</h3>
+                <p>Once you join the WhatsApp group, simply send a message to the admin. We accept EFT, Orange Money, or MyZaka.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section section-orange text-center">
+        <div class="container">
+            <h2 style="font-size: 3rem; margin-bottom: 20px;">Ready for Black Friday?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px;">Turn your idea into an online business and be live and selling on 27 Nov.</p>
+            <a href="https://chat.whatsapp.com/FGOdhJ1Vd0A6bh0rp9xMHC?s=cl&p=a&iam=2" class="cta-btn">Join the WhatsApp Group</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p><strong>creative compound.</strong> | business-in-a-box.co.bw</p>
+            <p>This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.</p>
+            <p>© 2024 Creative Compound. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- SIMPLE JAVASCRIPT FOR COUNTDOWN -->
+    <script>
+        // Set the date we're counting down to (Set to Nov 24, 2026)
+        var countDownDate = new Date("Nov 24, 2026 09:00:00").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
+            document.getElementById("mins").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("secs").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.querySelector(".timer").innerHTML = "REGISTRATION CLOSED";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
