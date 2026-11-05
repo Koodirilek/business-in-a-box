@@ -51,6 +51,9 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .challenge-banner-gradient {
+            background: linear-gradient(90deg, #0D0D0D 0%, #1C1917 40%, #FF5722 100%);
+        }
     </style>
 </head>
 <body class="bg-brand-black text-white font-sans antialiased selection:bg-brand-orange selection:text-white">
@@ -92,6 +95,45 @@
             </a>
         </div>
     </nav>
+
+    <!-- ===== CEDA FUNDING CHALLENGE BANNER (with WhatsApp link) ===== -->
+    <div class="relative overflow-hidden challenge-banner-gradient border-b border-brand-orange/40">
+        <div class="absolute inset-0 opacity-10">
+            <i class="fa-solid fa-bolt absolute -right-6 -top-10 text-[180px] text-white/20"></i>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 py-4 md:py-5 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-4 text-center lg:text-left">
+                    <div class="hidden sm:flex w-12 h-12 shrink-0 rounded-xl bg-white/15 border border-white/20 items-center justify-center text-white text-xl shadow-lg">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-1">
+                            <span class="bg-black/40 border border-white/20 text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-full">Black Friday Special 🔥</span>
+                            <span class="text-[10px] md:text-xs font-bold uppercase tracking-wider text-white/90">Free 3-Day Challenge · Tue 24 – Thu 26 Nov</span>
+                        </div>
+                        <p class="text-sm md:text-base font-bold text-white leading-snug">
+                            Turn Your Idea into a Thriving Online Business &mdash; <span class="text-white underline decoration-white/50 decoration-2 underline-offset-2">CEDA Funding Challenge</span>
+                        </p>
+                        <p class="text-[11px] md:text-xs text-white/80 mt-0.5">Live training, CIPA registration guidance, payments setup &amp; a Black Friday launch plan. Goal: BWP 10,350/month.</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-3 shrink-0">
+                    <a href="https://business-in-a-box.co.bw/challenge/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-white text-brand-black hover:bg-zinc-100 px-5 py-3 rounded-xl font-extrabold text-xs md:text-sm transition shadow-lg">
+                        <i class="fa-solid fa-rocket text-brand-orange"></i>
+                        View Challenge Info
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70"></i>
+                    </a>
+                    <!-- WhatsApp link added, using the same URL as the challenge page -->
+                    <a href="https://chat.whatsapp.com/FGOdhJ1Vd0A6bh0rp9xMHC?s=cl&p=a&iam=2" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl font-extrabold text-xs md:text-sm transition shadow-lg">
+                        <i class="fa-brands fa-whatsapp text-base"></i>
+                        Join Free WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ===== END CEDA BANNER ===== -->
 
     <!-- Hero Section -->
     <section class="relative pt-20 pb-24 overflow-hidden">
