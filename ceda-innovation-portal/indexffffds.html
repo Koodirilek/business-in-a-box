@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEDA Funding Challenge | Creative Compound</title>
+    
+    <!-- ADDED: Favicon / Tab Icon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23FF5C00' d='M239.1 6.3l-208 104c-13.4 6.7-22.1 20.4-22.1 35.5V366.2c0 15.1 8.7 28.8 22.1 35.5l208 104c9.8 4.9 21.2 4.9 31 0l208-104c13.4-6.7 22.1-20.4 22.1-35.5V145.8c0-15.1-8.7-28.8-22.1-35.5l-208-104c-9.8-4.9-21.2-4.9-31 0zM256 48l176 88-176 88-176-88 176-88zM48 179.6l176 88v168l-176-88v-168zm416 0v168l-176 88v-168l176-88z'/%3E%3C/svg%3E">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandOrange: '#FF5C00',
+                        brandBlack: '#121212',
+                        brandGold: '#FFA800',
+                        brandDarkGray: '#1E1E1E',
+                        brandLightGray: '#F8F9FA'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glow': '0 0 25px rgba(255, 92, 0, 0.35)',
+                        'gold-glow': '0 0 25px rgba(255, 168, 0, 0.35)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA;
+            color: #121212;
+        }
+        
+        /* Custom Animations */
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(255, 92, 0, 0.4);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(255, 92, 0, 0.7);
+                transform: scale(1.02);
+            }
+        }
+        
+        .cta-pulse {
+            animation: pulse-glow 2.5s infinite ease-in-out;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #FF5C00 0%, #FFA800 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dark-card-gradient {
+            background: linear-gradient(145deg, #1E1E1E 0%, #121212 100%);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brandOrange selection:text-white">
+
+    <!-- WhatsApp Links Constant -->
+    <!-- Direct URL: https://chat.whatsapp.com/FGOdhJ1Vd0A6bh0rp9xMHC?s=cl&p=a&iam=2 -->
+
+    <!-- ANNOUNCEMENT BANNER -->
+    <div class="bg-gradient-to-r from-brandBlack via-brandOrange to-brandBlack text-white text-xs md:text-sm py-2.5 px-4 text-center font-semibold sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto flex items-center justify-center space-x-2 flex-wrap">
+            <span class="bg-brandGold text-brandBlack text-[10px] uppercase font-extrabold px-2 py-0.5 rounded-full tracking-wider animate-pulse">Black Friday Special</span>
+            <span>🔥 <strong>FREE 3-DAY CHALLENGE:</strong> Tue 24 – Thu 26 Nov</span>
+            <span class="hidden sm:inline">|</span>
+            <span class="hidden sm:inline text-brandGold font-bold">Goal: Grow to BWP 10,350 / month!</span>
+        </div>
+    </div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="bg-white/90 backdrop-blur-md border-b border-gray-200 sticky top-[37px] z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-brandOrange flex items-center justify-center text-white text-xl font-black shadow-lg shadow-brandOrange/30 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-cubes"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-black tracking-tight text-brandBlack block leading-none">creative<span class="text-brandOrange">compound.</span></span>
+                        <span class="text-[10px] font-bold text-gray-400 tracking-widest uppercase block mt-0.5">Build • Learn • Grow</span>
+                    </div>
+                </a>
+
+                <!-- Nav Links (Desktop) -->
+                <nav class="hidden md:flex space-x-8 text-sm font-semibold text-gray-700">
+                    <a href="#overview" class="hover:text-brandOrange transition-colors">Overview</a>
+                    <a href="#schedule" class="hover:text-brandOrange transition-colors">3-Day Schedule</a>
+                    <a href="#pricing" class="hover:text-brandOrange transition-colors">Packages & Pricing</a>
+                    <a href="#why-us" class="hover:text-brandOrange transition-colors">Why Join</a>
+                    <a href="#faq" class="hover:text-brandOrange transition-colors">FAQ</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="flex items-center space-x-4">
+                    <a href="https://chat.whatsapp.com/FGOdhJ1Vd0A6bh0rp9xMHC?s=cl&p=a&iam=2" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                        <i class="fa-brands fa-whatsapp text-lg mr-2"></i>
+                        <span>Join Free WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="overview" class="relative bg-gradient-to-b from-white via-brandLightGray to-gray-100 pt-12 pb-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Content -->
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    
+                    <!-- Tagline Badge -->
+                    <div class="inline-flex items-center space-x-2 bg-orange-100 border border-brandOrange/30 text-brandOrange px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
+                        <i class="fa-solid fa-rocket"></i>
+                        <span>Smart Solutions • Real Results</span>
+                    </div>
+
+                    <!-- Headline -->
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-brandBlack leading-[1.15] tracking-tight mb-6">
+                        Turn Your Ideas into a <span class="gradient-text">Thriving Online Business</span> in Africa!
+                    </h1>
+
+                    <!-- Subheadline -->
+                    <p class="text-lg sm:text-xl text-gray-600 font-normal leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
+                        Be live and selling online by <strong>Black Friday (27 Nov)</strong>. Join our FREE 3-Day CEDA Funding Challenge and master how to build, register, fund, and launch your business with expert mentorship.
+                    </p>
+
+                    <!-- Key Bullet Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 text-left">
+                        <div class="flex items-center p-3 bg-white rounded-xl border border-gray-200 shadow-sm">
+                            <div class="w-8 h-8 rounded-lg bg-orange-100 text-brandOrange flex items-center justify-center mr-3 shrink-0">
+                                <i class="fa-solid fa-hand-holding-dollar"></i>
+                            </div>
+                            <span class="text-xs sm:text-sm font-semibold text-gray-800">CEDA Funding Requirements</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-white rounded-xl border border-gray-200 shadow-sm">
+                            <div class="w-8 h-8 rounded-lg bg-orange-100 text-brandOrange flex items-center justify-center mr-3 shrink-0">
+                                <i class="fa-solid fa-file-signature"></i>
+                            </div>
+                            <span class="text-xs sm:text-sm font-semibold text-gray-800">Winning Business Plan Prep</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-white rounded-xl border border-gray-200 shadow-sm">
+                            <div class="w-8 h-8 rounded-lg bg-orange-100 text-brandOrange flex items-center justify-center mr-3 shrink-0">
+                                <i class="fa-solid fa-building-columns"></i>
+                            </div>
+                            <span class="text-xs sm:text-sm font-semibold text-gray-800">CIPA Business & Bank Account Setup</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-white rounded-xl border border-gray-200 shadow-sm">
+                            <div class="w-8 h-8 rounded-lg bg-orange-100 text-brandOrange flex items-center justify-center mr-3 shrink-0">
+                                <i class="fa-solid fa-store"></i>
+                            </div>
+                            <span class="text-xs sm:text-sm font-semibold text-gray-800">Launch Online Store & Socials</span>
+                        </div>
+                    </div>
+
+                    <!-- Call to Action Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="https://chat.whatsapp.com/FGOdhJ1Vd0A6bh0rp9xMHC?s=cl&p=a&iam=2" target="_blank" rel="noopener noreferrer" 
+                           class="w-full sm:w-auto cta-pulse inline-flex items-center justify-center px-8 py-4 rounded-full bg-brandOrange hover:bg-orange-600 text-white font-extrabold text-lg transition-all shadow-glow text-center">
+                            <i class="fa-brands fa-whatsapp text-2xl mr-3"></i>
+                            <span>🚀 Join Free 3-Day Challenge</span>
+                        </a>
+                        <a href="#pricing" 
+                           class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 rounded-full bg-white hover:bg-gray-50 border-2 border-brandBlack text-brandBlack font-bold text-base transition-all text-center">
+                            <span>Explore Paid Packages</span>
+                            <i class="fa-solid fa-arrow-down ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                    
+                    <p class="text-xs text-gray-500 mt-4 font-medium text-center lg:text-left">
+                        <i class="fa-solid fa-shield-halved text-emerald-500 mr-1"></i> Free access to live 3-day training & replays in WhatsApp group.
+                    </p>
+
+                </div>
+
+                <!-- Right Visual Hero Card / Showcase -->
+                <div class="lg:col-span-5">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        
+                        <!-- Floating Badge Target Goal -->
+                        <div class="absolute -top-6 -right-2 sm:-right-6 z-20 bg-brandGold text-brandBlack p-4 rounded-2xl shadow-xl border-2 border-white transform rotate-3">
+                            <p class="text-[10px] uppercase font-black tracking-wider text-gray-900">Target Monthly Revenue</p>
+                            <p class="text-2xl font-black">BWP 10,350<span class="text-xs font-bold">/mo</span></p>
+                        </div>
+
+                        <!-- Main Display Card -->
+                        <div class="dark-card-gradient text-white rounded-3xl p-6 sm:p-8 border border-gray-800 shadow-2xl relative overflow-hidden">
+                            <div class="absolute -right-16 -bottom-16 w-48 h-48 bg-brandOrange/20 rounded-full blur-3xl"></div>
+                            
+                            <!-- Card Content Header -->
+                            <div class="flex justify-between items-start mb-6 border-b border-gray-800 pb-4">
+                                <div>
+                                    <span class="text-brandOrange font-extrabold text-xs tracking-widest uppercase">Special Event</span>
+                                    <h3 class="text-xl font-extrabold text-white">CEDA Funding Challenge</h3>
+                                </div>
+                                <span class="bg-brandOrange/20 text-brandOrange border border-brandOrange/40 text-xs font-bold px-3 py-1 rounded-full">
+                                    3 Days Live
+                                </span>
+                            </div>
+
+                            <!-- Highlights List -->
+                            <div class="space-y-4 mb-8">
+                                <div class="flex items-start">
+                                    <i class="fa-solid fa-circle-check text-brandOrange mt-1 mr-3 text-base"></i>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-gray-200">Free Live Training (Tue 24 - Thu 26 Nov)</h4>
+                                        <p class="text-xs text-gray-400">Step-by-step guidance to set up your online business.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <i class="fa-solid fa-circle-check text-brandOrange mt-1 mr-3 text-base"></i>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-gray-200">Ready for CEDA Funding</h4>
+                                        <p class="text-xs text-gray-400">Understand CEDA requirements and prepare business plans.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <i class="fa-solid fa-circle-check text-brandOrange mt-1 mr-3 text-base"></i>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-gray-200">Optional Complete Setup</h4>
+                                        <p class="text-xs text-gray-400">Upgrade to get your CIPA business, website & payment system built for you!</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Callout Banner inside Card -->
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 text-center">
+                                <p class="text-xs text-gray-300 mb-2 font-medium">Ready to start your digital journey?</p>
+                                <a href="https://chat.whatsapp.com/FGOdhJ1Vd0A6bh0rp9xMHC?s=cl&p=a&iam=2" target="_blank" rel="noopener noreferrer" 
+                                   class="block w-full py-3 rounded-xl bg-gradient-to-r from-brandOrange to-brandGold text-brandBlack font-black text-sm uppercase tracking-wide hover:opacity-95 transition-opacity">
+                                    Join WhatsApp Community
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm text-center">
+                <div class="border-r border-gray-100 last:border-none">
+                    <p class="text-3xl font-black text-brandOrange">BWP 10,350</p>
+                    <p class="text-xs font-semibold text-gray-500 uppercase mt-1">Monthly Revenue Goal</p>
+                </div>
+                <div class="border-r border-gray-100 last:border-none">
+                    <p class="text-3xl font-black text-brandBlack">3 Days</p>
+                    <p class="text-xs font-semibold text-gray-500 uppercase mt-1">Live Workshop & Replays</p>
+                </div>
+                <div class="border-r border-gray-100 last:border-none">
+                    <p class="text-3xl font-black text-brandOrange">CIPA Ready</p>
+                    <p class="text-xs font-semibold text-gray-500 uppercase mt-1">Official Registration</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-black text-brandBlack">3 Months</p>
+                    <p class="text-xs font-semibold text-gray-500 uppercase mt-1">Ongoing Mentorship Support</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3-DAY SCHEDULE SECTION -->
+    <section id="schedule" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="bg-orange-100 text-brandOrange text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest">
+                    Step-by-Step Curriculum
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-black text-brandBlack mt-4 mb-4">
+                    What Happens Each Day of the Challenge
+                </h2>
+                <p class="text-gray-600 text-base">
+                    Our intensive 3-day roadmap is engineered to take you from a raw business concept to a fully launched, CEDA-ready digital business.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Day 1 Card -->
+                <div class="bg-brandLightGray rounded-3xl p-8 border border-gray-200 hover:border-brandOrange transition-all duration-300 relative group flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="w-12 h-12 rounded-2xl bg-brandOrange text-white font-black text-xl flex items-center justify-center shadow-md">
+                                01
+                            </span>
+                            <span class="text-xs font-bold text-brandOrange bg-orange-100 px-3 py-1 rounded-full">
+                                Tue 24 Nov
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-brandBlack mb-3">Foundation & Business Setup</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Choose your winning business idea and brand name. Learn the essential steps for CIPA registration and opening a dedicated business bank account.
+                        </p>
+                        <ul class="space-y-2 text-xs font-medium text-gray-700 mb-6">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brandOrange mr-2"></i> Business Naming & Validation</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brandOrange mr-2"></i> CIPA Registration Guidance</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brandOrange mr-2"></i> Business Banking Fundamentals</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-gray-200/60">
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Day 1 Focus</span>
+                    </div>
+                </div>
+
+                <!-- Day 2 Card -->
+                <div class="bg-brandLightGray rounded-3xl p-8 border border-gray-200 hover:border-brandOrange transition-all duration-300 relative group flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="w-12 h-12 rounded-2xl bg-brandBlack text-white font-black text-xl flex items-center justify-center shadow-md">
+                                02
+                            </span>
+                            <span class="text-xs font-bold text-brandBlack bg-gray-200 px-3 py-1 rounded-full">
+                                Wed 25 Nov
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-brandBlack mb-3">Digital Store & Brand Building</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Build your online store, professional website, and key social media channels to establish instant market credibility and showcase your products/services.
+                        </p>
+                        <ul class="space-y-2 text-xs font-medium text-gray-700 mb-6">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brandOrange mr-2"></i> High-Converting Website Structure</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brandOrange mr-2"></i> Social Media Page Optimization</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brandOrange mr-2"></i> Content & Offer Creation</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-gray-200/60">
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Day 2 Focus</span>
+                    </div>
+                </div>
+
+                <!-- Day 3 Card -->
+                <div class="bg-brandLightGray rounded-3xl p-8 border border-gray-200 hover:border-brandOrange transition-all duration-300 relative group flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="w-12 h-12 rounded-2xl bg-brandGold text-brandBlack font-black text-xl flex items-center justify-center shadow-md">
+                                03
+                            </span>
+                            <span class="text-xs font-bold text-gray-900 bg-amber-100 px-3 py-1 rounded-full">
+                                Thu 26 Nov
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-brandBlack mb-3">Payments, Funding & Launch Plan</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Set up online payment gateways, test checkout flows, align with CEDA funding requirements, and plan your Black Friday launch for <strong>Fri 27 Nov!</strong>
+                        </p>
+                        <ul class="space-y-2 text-xs font-medium text-gray-700 mb-6">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brandOrange mr-2"></i> Payment Gateway Integration</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brandOrange mr-2"></i> CEDA Funding Blueprint</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brandOrange mr-2"></i> Black Friday Launch Strategy</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-gray-200/60">
+                        <span class="text-xs font-bold text-brandOrange uppercase tracking-wider font-extrabold">🚀 Live & Selling on Friday!</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA Callout -->
+            <div class="mt-12 text-center">
+                <a href="https://chat.whatsapp.com/FGOdhJ1Vd0A6bh0rp9xMHC?s=cl&p=a&iam=2" target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-base shadow-lg transition-all transform hover:-translate-y-0.5">
+                    <i class="fa-brands fa-whatsapp text-xl mr-2"></i>
+                    <span>Secure Your Spot in the Free Challenge</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PRICING & PACKAGES SECTION (HIGH CONVERSION UP-SELL) -->
+    <section id="pricing" class="py-20 bg-brandLightGray relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="bg-brandOrange/10 text-brandOrange text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest">
+                    Black Friday Special Offer
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-black text-brandBlack mt-4 mb-4">
+                    Choose How You Join
+                </h2>
+                <p class="text-gray-600 text-base">
+                    Everyone can attend the free challenge. Upgrade to our paid packages if you want Creative Compound to handle registration, websites, and business plans for you.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 items-stretch">
+                
+                <!-- TIER 1: FREE CHALLENGE -->
+                <div class="bg-white rounded-3xl p-8 border border-gray-200 shadow-sm flex flex-col justify-between hover:shadow-lg transition-shadow">
+                    <div>
+                        <div class="mb-4">
+                            <span class="text-xs font-bold uppercase tracking-wider text-gray-400">Entry Level</span>
+                            <h3 class="text-2xl font-black text-brandBlack mt-1">FREE CHALLENGE</h3>
+                        </div>
+
+                        <div class="my-6">
+                            <span class="text-4xl font-black text-brandBlack">FREE</span>
+                            <span class="text-gray-500 text-sm ml-2">/ BWP 0</span>
+                        </div>
+
+                        <p class="text-xs text-gray-500 mb-6 font-medium">
+                            Perfect for DIY entrepreneurs who want to learn the process and build on their own.
+                        </p>
+
+                        <ul class="space-y-3 text-sm text-gray-700 border-t border-gray-100 pt-6 mb-8">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-circle-check text-emerald-500 mt-1 mr-3"></i>
+                                <span>Live 3-Day Training Sessions</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-circle-check text-emerald-500 mt-1 mr-3"></i>
+                                <span>Replays available in WhatsApp group</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-circle-check text-emerald-500 mt-1 mr-3"></i>
+                                <span>Basic business setup guidance</span>
+                            </li>
+                            <li class="flex items-start text-gray-400">
+                                <i class="fa-solid fa-circle-xmark mt-1 mr-3"></i>
+                                <span>No official CIPA business registration included</span>
+                            </li>
+                            <li class="flex items-start text-gray-400">
+                                <i class="fa-solid fa-circle-xmark mt-1 mr-3"></i>
+                                <span>No website or social media building</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="https://chat.whatsapp.com/FGOdhJ1Vd0A6bh0rp9xMHC?s=cl&p=a&iam=2" target="_blank" rel="noopener noreferrer" 
+                       class="w-full py-4 rounded-xl border-2 border-brandBlack hover:bg-brandBlack hover:text-white text-brandBlack font-bold text-sm text-center transition-all block">
+                        Join Free WhatsApp
+                    </a>
+                </div>
+
+                <!-- TIER 2: STARTER PACKAGE -->
+                <div class="bg-white rounded-3xl p-8 border border-gray-200 shadow-sm flex flex-col justify-between hover:shadow-lg transition-shadow">
+                    <div>
+                        <div class="mb-4">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brandOrange">Fast Track Setup</span>
+                            <h3 class="text-2xl font-black text-brandBlack mt-1">STARTER</h3>
+                        </div>
+
+                        <div class="my-6">
+                            <span class="text-4xl font-black text-brandBlack">P1,650</span>
+                            <span class="text-gray-500 text-sm ml-2">One-time</span>
+                        </div>
+
+                        <p class="text-xs text-gray-500 mb-6 font-medium">
+                            Get your business officially registered with CIPA so you are legitimate from day one.
+                        </p>
+
+                        <ul class="space-y-3 text-sm text-gray-700 border-t border-gray-100 pt-6 mb-8">
+                            <li class="flex items-start font-medium">
+                                <i class="fa-solid fa-circle-check text-brandOrange mt-1 mr-3"></i>
+                                <span><strong>Everything in Free Challenge</strong></span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-circle-check text-brandOrange mt-1 mr-3"></i>
+                                <span>Registered Business (Not Company) with CIPA</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-circle-check text-brandOrange mt-1 mr-3"></i>
+                                <span>Business Bank Account Setup Guidance (Any Bank)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-circle-check text-brandOrange mt-1 mr-3"></i>
+                                <span>Online store & business setup guidance</span>
+                            </li>
+                            <li class="flex items-start text-gray-400">
+                                <i class="fa-solid fa-circle-xmark mt-1 mr-3"></i>
+                                <span>No 3-Month ongoing mentorship support</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="https://chat.whatsapp.com/FGOdhJ1Vd0A6bh0rp9xMHC?s=cl&p=a&iam=2" target="_blank" rel="noopener noreferrer" 
+                       class="w-full py-4 rounded-xl bg-brandBlack hover:bg-gray-800 text-white font-bold text-sm text-center transition-all block">
+                        Get Starter Package
+                    </a>
+                </div>
+
+                <!-- TIER 3: VIP CEDA FUNDING PACKAGE (RECOMMENDED / BEST VALUE) -->
+                <div class="dark-card-gradient rounded-3xl p-8 border-2 border-brandOrange shadow-glow flex flex-col justify-between relative transform lg:-translate-y-2">
+                    
+                    <!-- Popular Badge -->
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brandOrange to-brandGold text-brandBlack font-black text-xs uppercase px-4 py-1.5 rounded-full shadow-md tracking-wider">
+                        ★ Best Value & Most Popular ★
+                    </div>
+
+                    <div>
+                        <div class="mb-4 mt-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brandGold">Full Service + Funding Ready</span>
+                            <h3 class="text-2xl font-black text-white mt-1">VIP CEDA PACKAGE</h3>
+                        </div>
+
+                        <div class="my-6">
+                            <span class="text-4xl font-black text-white">P3,000</span>
+                            <span class="text-brandGold text-sm font-semibold ml-2">for 3 Months Support</span>
+                        </div>
+
+                        <p class="text-xs text-gray-300 mb-6 font-medium">
+                            We do all the heavy lifting: registration, professional website, business plan for CEDA, and 3 months mentorship!
+                        </p>
+
+                        <ul class="space-y-3 text-sm text-gray-200 border-t border-gray-800 pt-6 mb-8">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-circle-check text-brandOrange mt-1 mr-3"></i>
+                                <span><strong>Registered Business with CIPA</strong></span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-circle-check text-brandOrange mt-1 mr-3"></i>
+                                <span><strong>Business Bank Account at Any Bank</strong></span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-circle-check text-brandOrange mt-1 mr-3"></i>
+                                <span><strong>Professional Website & Social Media Pages</strong></span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-circle-check text-brandOrange mt-1 mr-3"></i>
+                                <span><strong>Online Management System</strong> with Secure Logins</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-circle-check text-brandOrange mt-1 mr-3"></i>
+                                <span><strong>Business Plan Development & CEDA Training</strong></span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-circle-check text-brandGold mt-1 mr-3"></i>
+                                <span><strong class="text-brandGold">3 Months Hands-on Mentorship</strong> until fully functional!</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <a href="https://chat.whatsapp.com/FGOdhJ1Vd0A6bh0rp9xMHC?s=cl&p=a&iam=2" target="_blank" rel="noopener noreferrer" 
+                           class="w-full py-4 rounded-xl bg-gradient-to-r from-brandOrange to-brandGold hover:opacity-95 text-brandBlack font-black text-base text-center transition-all block uppercase tracking-wider shadow-md">
+                            Claim VIP Package (P3,000)
+                        </a>
+                        <p class="text-[11px] text-gray-400 text-center mt-3">
+                            🎯 Goal: Dedicated support on your path to BWP 10,350/month!
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Disclaimer note -->
+            <div class="mt-8 text-center text-xs text-gray-500 max-w-2xl mx-auto">
+                * VIP package includes support on your path to BWP 10,350/month. Individual results vary based on effort and execution; no income level is guaranteed.
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WHY CREATIVE COMPOUND / VALUE PILLARS -->
+    <section id="why-us" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="bg-orange-100 text-brandOrange text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest">
+                    Your Success Partner
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-black text-brandBlack mt-4 mb-4">
+                    Why Join Creative Compound?
+                </h2>
+                <p class="text-gray-600 text-base">
+                    We don't just teach theory. We build practical digital assets, help you register officially, and prepare you to access CEDA funding in Botswana and across Africa.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <div class="bg-brandLightGray p-6 rounded-2xl border border-gray-200">
+                    <div class="w-12 h-12 rounded-xl bg-brandOrange/10 text-brandOrange flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-brandBlack mb-2">Expert Guidance</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Step-by-step training tailored for the African digital market, removing tech headaches and guesswork.
+                    </p>
+                </div>
+
+                <div class="bg-brandLightGray p-6 rounded-2xl border border-gray-200">
+                    <div class="w-12 h-12 rounded-xl bg-brandOrange/10 text-brandOrange flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-landmark"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-brandBlack mb-2">CEDA & CIPA Mastery</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Full clarity on compliance, CIPA business registrations, and CEDA funding submission criteria.
+                    </p>
+                </div>
+
+                <div class="bg-brandLightGray p-6 rounded-2xl border border-gray-200">
+                    <div class="w-12 h-12 rounded-xl bg-brandOrange/10 text-brandOrange flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-hands-holding-circle"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-brandBlack mb-2">3-Month Mentorship</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        We stick with VIP members for 3 full months until their business is functional and generating revenue.
+                    </p>
+                </div>
+
+                <div class="bg-brandLightGray p-6 rounded-2xl border border-gray-200">
+                    <div class="w-12 h-12 rounded-xl bg-brandOrange/10 text-brandOrange flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-brandBlack mb-2">Proven Path to Growth</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Designed with a clear focus on reaching BWP 10,350/month through proven digital sales funnels.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ SECTION (ACCORDION) -->
+    <section id="faq" class="py-20 bg-brandLightGray">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-16">
+                <span class="bg-brandOrange/10 text-brandOrange text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest">
+                    Clear Answers
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-black text-brandBlack mt-4">
+                    Frequently Asked Questions
+                </h2>
+            </div>
+
+            <div class="space-y-4" id="faq-accordion">
+                
+                <!-- Q1 -->
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                    <button onclick="toggleFaq(1)" class="w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-brandBlack text-base">Is the 3-Day Challenge really free?</span>
+                        <i id="icon-1" class="fa-solid fa-chevron-down text-brandOrange transition-transform"></i>
+                    </button>
+                    <div id="faq-1" class="hidden px-6 pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+                        Yes! Attending the live 3-day challenge and accessing replays in our WhatsApp group is 100% free. Paid packages (Starter & VIP) are optional for entrepreneurs who want us to handle CIPA registration, website building, and business plan development for them.
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                    <button onclick="toggleFaq(2)" class="w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-brandBlack text-base">Do I need an existing business to join?</span>
+                        <i id="icon-2" class="fa-solid fa-chevron-down text-brandOrange transition-transform"></i>
+                    </button>
+                    <div id="faq-2" class="hidden px-6 pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+                        No! You can come with just a business idea or even choose one during Day 1. Our Starter and VIP packages include CIPA business registration to officially register your name.
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                    <button onclick="toggleFaq(3)" class="w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-brandBlack text-base">Where and how does the challenge take place?</span>
+                        <i id="icon-3" class="fa-solid fa-chevron-down text-brandOrange transition-transform"></i>
+                    </button>
+                    <div id="faq-3" class="hidden px-6 pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+                        The challenge is hosted online inside our exclusive WhatsApp group. You will receive links for live video sessions, daily step-by-step guides, action items, and session replays directly on your phone.
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                    <button onclick="toggleFaq(4)" class="w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-brandBlack text-base">How do I pay for the paid packages (Starter / VIP)?</span>
+                        <i id="icon-4" class="fa-solid fa-chevron-down text-brandOrange transition-transform"></i>
+                    </button>
+                    <div id="faq-4" class="hidden px-6 pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+                        We offer convenient local payment methods in Botswana including Direct EFT / Bank Transfer, Orange Money, and MyZaka. Payment details are provided inside the WhatsApp group or by contacting our team directly.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- BOTTOM CTA BANNER -->
+    <section class="py-16 bg-gradient-to-r from-brandBlack via-brandDarkGray to-brandBlack text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-3xl sm:text-5xl font-black mb-4">
+                Ready for Black Friday Launch?
+            </h2>
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
+                Don't miss this opportunity to turn your business idea into a funded, revenue-generating online store.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://chat.whatsapp.com/FGOdhJ1Vd0A6bh0rp9xMHC?s=cl&p=a&iam=2" target="_blank" rel="noopener noreferrer" 
+                   class="w-full sm:w-auto px-8 py-4 rounded-full bg-brandOrange hover:bg-orange-600 text-white font-black text-lg transition-all shadow-glow">
+                    <i class="fa-brands fa-whatsapp text-2xl mr-2"></i>
+                    <span>Join WhatsApp Group Now</span>
+                </a>
+            </div>
+            <p class="text-xs text-gray-400 mt-4">Free Challenge • Tue 24 – Thu 26 Nov</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brandBlack text-gray-400 border-t border-gray-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 pb-8 border-b border-gray-800 text-center md:text-left">
+                
+                <!-- Col 1: Brand -->
+                <div>
+                    <div class="flex items-center justify-center md:justify-start space-x-3 mb-3">
+                        <div class="w-8 h-8 rounded-lg bg-brandOrange flex items-center justify-center text-white font-black">
+                            <i class="fa-solid fa-cubes text-sm"></i>
+                        </div>
+                        <span class="text-lg font-black text-white">creative<span class="text-brandOrange">compound.</span></span>
+                    </div>
+                    <p class="text-xs text-gray-500">Build • Learn • Grow</p>
+                    <p class="text-xs text-gray-400 mt-2">Smart Solutions. Real Results.</p>
+                </div>
+
+                <!-- Col 2: Quick Links / Contact -->
+                <div>
+                    <h4 class="text-white text-xs font-extrabold uppercase tracking-widest mb-3">Direct Contact</h4>
+                    <ul class="text-xs space-y-2">
+                        <li>
+                            <a href="https://wa.me/26772464462" class="hover:text-brandOrange flex items-center justify-center md:justify-start">
+                                <i class="fa-solid fa-phone text-brandOrange mr-2"></i> +267 72 464 462
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://chat.whatsapp.com/FGOdhJ1Vd0A6bh0rp9xMHC?s=cl&p=a&iam=2" target="_blank" rel="noopener noreferrer" class="hover:text-brandOrange flex items-center justify-center md:justify-start">
+                                <i class="fa-brands fa-whatsapp text-brandOrange mr-2"></i> Official WhatsApp Group
+                            </a>
+                        </li>
+                        <li>
+                            <span class="flex items-center justify-center md:justify-start">
+                                <i class="fa-solid fa-globe text-brandOrange mr-2"></i> business-in-a-box.co.bw
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Disclaimer -->
+                <div>
+                    <h4 class="text-white text-xs font-extrabold uppercase tracking-widest mb-3">Important Notice</h4>
+                    <p class="text-[11px] text-gray-500 leading-relaxed">
+                        VIP package provides mentorship and digital assets to support your business goal of reaching BWP 10,350/month. Individual earnings depend on market demand, commitment, and implementation.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="text-center text-xs text-gray-600">
+                &copy; 2026 Creative Compound. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Accordion Interactivity -->
+    <script>
+        function toggleFaq(id) {
+            const content = document.getElementById(`faq-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+    </script>
+</body>
+</html>
